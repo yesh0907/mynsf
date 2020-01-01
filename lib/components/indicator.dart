@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 
 class Indicator extends StatelessWidget {
   final int days;
-  final double totalDays = 365.0 * 2;
+  final double totalDays = 365.0 * 2 - (31*2);
 
   Indicator({this.days});
 

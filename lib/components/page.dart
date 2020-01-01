@@ -21,7 +21,7 @@ class Page extends StatelessWidget {
       child: Column(
         verticalDirection: VerticalDirection.up,
         children: <Widget>[
-          PageDots(currIdx: this.currPage),
+          // PageDots(currIdx: this.currPage),
           this.content
         ],
       ),

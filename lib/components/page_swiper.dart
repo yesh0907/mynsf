@@ -13,10 +13,10 @@ class PageSwiper extends StatelessWidget {
       children: <Widget>[
         Page(
           currPage: 1,
-          content: Countdown(ordDate: {"day": 31, "month": 7, "year": 2020}),
+          content: Countdown(ordDate: {"day": 30, "month": 7, "year": 2020}),
         ),
-        Page(currPage: 2, content: Text("2")),
-        Page(currPage: 3, content: Text("3")),
+        // Page(currPage: 2, content: Text("2")),
+        // Page(currPage: 3, content: Text("3")),
       ],
     );
   }

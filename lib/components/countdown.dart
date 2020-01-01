@@ -13,7 +13,10 @@ class Countdown extends StatelessWidget {
   Countdown({this.ordDate});
 
   Future<Days> _fetchDuration() async {
-    final response = await http.get("https://mynsf.yesh0907.now.sh");
+    final String day = ordDate['day'].toString();
+    final String month = ordDate['month'].toString();
+    final String year = ordDate['year'].toString();
+    final response = await http.get("https://mynsf.yesh0907.now.sh/?d2=$day&m2=$month&y2=$year");
 
     if (response.statusCode == 200) {
       return Days.fromJson(json.decode(response.body));
@@ -28,6 +31,8 @@ class Countdown extends StatelessWidget {
         future: _fetchDuration(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            int days = int.parse(snapshot.data.days) - 1;
+            int workingDays = int.parse(snapshot.data.workingDays) - 1;
             return Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,7 +40,7 @@ class Countdown extends StatelessWidget {
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(top: 30),
-                    child: Indicator(days: int.parse(snapshot.data.days)),
+                    child: Indicator(days: days),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 60),
@@ -48,7 +53,7 @@ class Countdown extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    snapshot.data.days,
+                    days.toString(),
                     style: TextStyle(
                       fontSize: 42,
                       fontWeight: FontWeight.w500,
@@ -65,7 +70,7 @@ class Countdown extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    snapshot.data.workingDays,
+                    workingDays.toString(),
                     style: TextStyle(
                       fontSize: 42,
                       fontWeight: FontWeight.w500,
