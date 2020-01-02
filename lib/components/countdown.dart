@@ -39,7 +39,7 @@ class Countdown extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(top: 30),
+                    padding: EdgeInsets.only(top: 15),
                     child: Indicator(days: days),
                   ),
                   Padding(
