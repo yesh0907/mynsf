@@ -33,8 +33,7 @@ class Countdown extends StatelessWidget {
           if (snapshot.hasData) {
             int days = int.parse(snapshot.data.days) - 1;
             int workingDays = int.parse(snapshot.data.workingDays) - 1;
-            return Expanded(
-              child: Column(
+            return  Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -77,20 +76,20 @@ class Countdown extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
             );
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
-          return Expanded(
-              child: Container(
-                child: Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: Colors.red[800],
-                    valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
-                  )
-                ),
+          return Center(
+            child: SizedBox(
+              height: 100,
+              width: 100,
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.red[800],
+                valueColor: new AlwaysStoppedAnimation<Color>(Colors.red[200]),
+                strokeWidth: 6.0,
               )
+            )
           );
         });
   }
